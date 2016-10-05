@@ -62,3 +62,19 @@ ejemplo.py  ejemplo.py.cde  fichero.txt  python.cde
 ```
 
 Por lo que su ejecución es independiente de la distribución de Linux en la que se ejecute.
+
+
+##Ejercicio 4
+**Comprobar si el procesador o procesadores instalados tienen estos flags. ¿Qué modelo de procesador es? ¿Qué aparece como salida de esa orden?**
+
+La salida es:
+```
+flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch epb intel_pt tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp
+```
+
+repetido 4 veces, tantas como núcleos tiene el procesador. El modelo es un Intel Core i5-6300HQ.
+
+IMAGEN 3
+
+Tal y como se muestra en la imagen anterior, el procesador soporta la virtualización.
+
