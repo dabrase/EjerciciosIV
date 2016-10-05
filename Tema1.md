@@ -39,3 +39,26 @@ Se obtiene como conclusión que para las situaciones propuestas, el servidor clo
 
 [Comentario en el foro](https://github.com/JJ/IV16-17/issues/1#issuecomment-251745834)
 
+### Ejercicio 3.2
+**Crear un programa simple en cualquier lenguaje interpretado para Linux, empaquetarlo con CDE y probarlo en diferentes distribuciones.**
+
+Creo un programa sencillo que imprime el contenido de un archivo llamado fichero.txt. Con el siguiente comando, lo empaqueto con CDE:
+
+```bash
+cde python ejemplo.py
+```
+
+En el paquete, podemos comprobar como CDE ha creado la ruta en la que se encontraba el script
+
+```bash
+cd cde-package/cde-root/home/asus/Descargas/
+```
+
+Y ha copiado _fichero.txt_ para su correcta ejecución:
+
+```bash
+ls
+ejemplo.py  ejemplo.py.cde  fichero.txt  python.cde
+```
+
+Por lo que su ejecución es independiente de la distribución de Linux en la que se ejecute.
