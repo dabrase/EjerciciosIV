@@ -64,7 +64,7 @@ ejemplo.py  ejemplo.py.cde  fichero.txt  python.cde
 Por lo que su ejecución es independiente de la distribución de Linux en la que se ejecute.
 
 
-##Ejercicio 4
+### Ejercicio 4
 **Comprobar si el procesador o procesadores instalados tienen estos flags. ¿Qué modelo de procesador es? ¿Qué aparece como salida de esa orden?**
 
 La salida es:
@@ -78,3 +78,28 @@ IMAGEN 3
 
 Tal y como se muestra en la imagen anterior, el procesador soporta la virtualización.
 
+### Ejercicio 5.1
+**Comprobar si el núcleo instalado en tu ordenador contiene este módulo del kernel usando la orden kvm-ok.**
+
+Se requiere de cpu-checker para usar esta orden, por lo que lo instalamos:
+```bash
+sudo apt install cpu-checker
+```
+
+Ỳa si se puede usar la orden, cuya respuesta es:
+```
+INFO: /dev/kvm exists
+KVM acceleration can be used
+```
+
+Lo que significa que el módulo KVM está en el kernel que uso actualmente.
+
+### Ejercicio 5.2
+**Instalar un hipervisor para gestionar máquinas virtuales, que más adelante se podrá usar en pruebas y ejercicios.**
+
+En ubuntu, se instala mediante
+```bash
+sudo apt-get install qemu
+```
+
+Se plantea como idea cambiar el hipervisor más adelante una vez se analicen las ventajas y desventajas de cada uno.
