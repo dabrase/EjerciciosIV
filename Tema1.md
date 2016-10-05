@@ -16,11 +16,11 @@ Estos cálculos están realizados suponiendo periodos anuales completos. Si se r
 
 Vamos a comparar un servidor dedicado de [Hostgator](http://www.hostgator.com/dedicated-server) con el web services de [Amazon](https://aws.amazon.com/es/ec2/pricing/) con características similares: CPU de 2 núcleos y 4GB de RAM.
 
-IMAGEN1
+![img1](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen1.png)
 
 En el servidor dedicado, el precio es de 79$ al mes, alrededor de 70.55€.
 
-IMAGEN2
+![img2](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen2.png)
 
 En servidor cloud de Amazon, usando la opción *t2.medium* el coste es de 0.06$ por hora, lo que serían 0.053€.
 
@@ -74,7 +74,7 @@ flags       : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat 
 
 repetido 4 veces, tantas como núcleos tiene el procesador. El modelo es un Intel Core i5-6300HQ.
 
-IMAGEN 3
+![img3](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen3.png)
 
 Tal y como se muestra en la imagen anterior, el procesador soporta la virtualización.
 
