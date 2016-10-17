@@ -31,3 +31,33 @@ Para hacer el cambio entre versiones se usa el comando _nvm use version-a-usar_ 
 ```bash
 nvm use v6.8.1
 ```
+
+[!img](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen4.png)
+
+### Ejercicio 2
+**Como ejercicio, algo ligeramente diferente: una web para calificar las empresas en las que hacen prácticas los alumnos.
+Crear un repositorio en GitHub para la librería y crear un pequeño programa que use algunas de sus funcionalidades.
+Si se quiere hacer con cualquier otra aplicación, también es válido. Se trata de hacer una aplicación simple que se pueda hacer rápidamente con un generador de aplicaciones como los que incluyen diferentes marcos MVC. Si cuesta mucho trabajo, simplemente prepara una aplicación que puedas usar más adelante en el resto de los ejercicios.**
+
+Voy a seguir un tutorial de node.js, express y jquery del [blog Koalite](http://blog.koalite.com/2011/11/tutorial-node-js-express-jquery-i-creando-la-aplicacion/).
+
+Los pasos que he tenido que seguir que no aparecen en el tutorial son los siguientes:
+* Tras la instalación de express, para obtener el generador usar:
+```bash
+npm install express-generator
+```
+* Una vez creado el proyecto express, ejecutar el siguiente comando para instalar las dependencias necesarias antes de lanzar la aplicación:
+```bash
+cd . && npm install
+```
+* La primera línea del archivo _index.jade_ debe ser _doctype html_ en lugar de _doctype 5_.
+
+A punto de terminal el tutorial, las incongruencias entre el código autogenerado por express 4 y el de ejemplo del tutorial (que se basa en la versión 3) han hecho casi imposible finalizarlo, por lo que he hecho un fork y rehecho los pasos anteriores. [Enlace al repositorio](https://github.com/juanjetomas/Nodejs-Sample)
+
+Ejecutamos la aplicación:
+
+[!img5](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen5.png)
+
+Y en http://localhost:3000/ encontramos:
+
+[!img6](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen6.png)
