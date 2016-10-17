@@ -32,7 +32,7 @@ Para hacer el cambio entre versiones se usa el comando _nvm use version-a-usar_ 
 nvm use v6.8.1
 ```
 
-[!img](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen4.png)
+![img4](Capturas/imagen4.png)
 
 ### Ejercicio 2
 **Como ejercicio, algo ligeramente diferente: una web para calificar las empresas en las que hacen prácticas los alumnos.
@@ -56,8 +56,8 @@ A punto de terminal el tutorial, las incongruencias entre el código autogenerad
 
 Ejecutamos la aplicación:
 
-[!img5](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen5.png)
+![img5](Capturas/imagen5.png)
 
 Y en http://localhost:3000/ encontramos:
 
-[!img6](https://github.com/juanjetomas/EjerciciosIV/blob/master/Capturas/imagen6.png)
+![img6](Capturas/imagen6.png)
