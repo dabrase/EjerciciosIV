@@ -71,7 +71,7 @@ Y en http://localhost:3000/ encontramos:
 
 Tal y como se ve en las 2 imágenes anteriores el programa funciona tanto en la versión v.6.8.1 como en la v0.11.16.
 
-## Ejercicio 4
+### Ejercicio 4
 **Crear una descripción del módulo usando package.json.**
 He generado el package.json mediante el comando:
 ```bash
@@ -105,3 +105,25 @@ Obteniendo como resultado:
   "homepage": "https://github.com/juanjetomas/Nodejs-Sample#readme"
 }
 ```
+
+### Ejercicio 5
+**Automatizar con grunt y docco (o algún otro sistema) la generación de documentación de la librería que se cree. Previamente, por supuesto, habrá que documentar tal librería.**
+Para poder instalar grunt globalmente (y usando sudo) en primer lugar ejecutamos:
+```bash
+sudo apt-get install npm
+```
+Y a continuación instalamos grunt de manera global:
+
+![img10](Capturas/imagen10.png)
+
+Pese al paso anterior recibía un aviso al instalar docco de que grunt no estaba instalado, quedando resuelto al usar:
+```bash
+npm install -g grunt-cli
+```
+A continuación he instalado docco:
+
+![img11](Capturas/imagen11.png)
+
+Y esto queda reflejado en el _package.json_:
+
+![img12](Capturas/imagen12.png)
