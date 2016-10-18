@@ -70,3 +70,38 @@ Y en http://localhost:3000/ encontramos:
 ![img8](Capturas/imagen8.png)
 
 Tal y como se ve en las 2 imágenes anteriores el programa funciona tanto en la versión v.6.8.1 como en la v0.11.16.
+
+## Ejercicio 4
+**Crear una descripción del módulo usando package.json.**
+He generado el package.json mediante el comando:
+```bash
+npm init
+```
+Obteniendo como resultado:
+```javascript
+{
+  "name": "calificador-empresas-node",
+  "version": "1.0.0",
+  "description": "Permite la calificacion de empresas de practicas icaro",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^3.0.0rc3",
+    "jade": "^0.27.2",
+    "underscore": "^1.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanjetomas/Nodejs-Sample.git"
+  },
+  "author": "Juan Jesus Tomas Rojas",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/juanjetomas/Nodejs-Sample/issues"
+  },
+  "homepage": "https://github.com/juanjetomas/Nodejs-Sample#readme"
+}
+```
