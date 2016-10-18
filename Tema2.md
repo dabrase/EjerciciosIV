@@ -61,3 +61,12 @@ Ejecutamos la aplicación:
 Y en http://localhost:3000/ encontramos:
 
 ![img6](Capturas/imagen6.png)
+
+### Ejercicio 3
+**Ejecutar el programa en diferentes versiones del lenguaje. ¿Funciona en todas ellas?**
+
+![img7](Capturas/imagen7.png)
+
+![img8](Capturas/imagen8.png)
+
+Tal y como se ve en las 2 imágenes anteriores el programa funciona tanto en la versión v.6.8.1 como en la v0.11.16.
