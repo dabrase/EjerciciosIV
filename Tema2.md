@@ -162,3 +162,43 @@ Y finalmente generamos la documentación:
 Éste es el archivo _Gruntfile.html_ por ejemplo:
 
 ![img14](Capturas/imagen14.png)
+
+### Ejercicio 6
+**Para la aplicación que se está haciendo, escribir una serie de aserciones y probar que efectivamente no fallan. Añadir tests para una nueva funcionalidad, probar que falla y escribir el código para que no lo haga (vamos, lo que viene siendo TDD).**
+He añadido varios asserts en el archivo _index.js_ en los que compruebo la correcta lectura de variables y algunas condiciones.
+```json
+exports.index = function(req, res) {
+  var names = companies.map(function(p) { return p.name; });
+  assert(names, "Colección de nombres de empresas");
+  res.render('index', { companies: names })
+};
+
+exports.company = function(req, res) {
+  var comments = _(companies).detect(function (p) {
+    return p.name == req.params.name;
+  }).comments;
+  assert(comments.length!=0, "Si no hay comentarios se debe mostrar un mensaje invitando a añadirlos.")
+  res.json(comments);
+}
+
+exports.addComment = function(req, res) {
+  var company = _(companies).detect(function(p) {
+    return p.name == req.body.name;
+  });
+
+  var numComments = company.comments.length;
+  company.comments.push(req.body.comment);
+  assert(numComments+1 === company.comments.length, "El comentario no se ha añadido correctamente");
+
+  console.log('Nuevo comentario para ' + company.name + ': ' + req.body.comment);
+
+  res.json({status: 'ok' });
+}
+```
+Y podemos comprar que hay un test que falla:
+
+![img15](Capturas/imagen15.png)
+
+Ocurre porque no mostramos un mensaje invitando al usuario a añadir su valoración de la empresa que aún no tiene. Tras modificar el código comprobamos que el test ya no falla:
+
+![img16](Capturas/imagen16.png)
