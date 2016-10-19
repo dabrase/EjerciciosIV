@@ -73,6 +73,7 @@ Tal y como se ve en las 2 imágenes anteriores el programa funciona tanto en la 
 
 ### Ejercicio 4
 **Crear una descripción del módulo usando package.json.**
+
 He generado el package.json mediante el comando:
 ```bash
 npm init
@@ -108,6 +109,7 @@ Obteniendo como resultado:
 
 ### Ejercicio 5
 **Automatizar con grunt y docco (o algún otro sistema) la generación de documentación de la librería que se cree. Previamente, por supuesto, habrá que documentar tal librería.**
+
 Para poder instalar grunt globalmente (y usando sudo) en primer lugar ejecutamos:
 ```bash
 sudo apt-get install npm
@@ -165,6 +167,7 @@ Y finalmente generamos la documentación:
 
 ### Ejercicio 6
 **Para la aplicación que se está haciendo, escribir una serie de aserciones y probar que efectivamente no fallan. Añadir tests para una nueva funcionalidad, probar que falla y escribir el código para que no lo haga (vamos, lo que viene siendo TDD).**
+
 He añadido varios asserts en el archivo _index.js_ en los que compruebo la correcta lectura de variables y algunas condiciones.
 ```json
 exports.index = function(req, res) {
@@ -202,3 +205,29 @@ Y podemos comprar que hay un test que falla:
 Ocurre porque no mostramos un mensaje invitando al usuario a añadir su valoración de la empresa que aún no tiene. Tras modificar el código comprobamos que el test ya no falla:
 
 ![img16](Capturas/imagen16.png)
+
+### Ejercicio 7
+**Convertir los tests unitarios anteriores con assert a programas de test y ejecutarlos desde mocha, usando descripciones del test y del grupo de test de forma correcta.**
+
+Instalamos mocha globalmente con:
+```bash
+sudo npm install -g mocha
+```
+Y dentro de la carpeta _tests_ creamos un archivo _tests.js_ con el siguiente contenido:
+```json
+var assert = require("assert");
+empresas = require(__dirname+"/../app.js");
+
+describe('Empresas', function(){
+    describe('Carga', function(){
+        it('Carga el fichero app.js', function(){
+            assert(empresas, "Correcto");
+        });
+    });
+});
+```
+Que simplemente comprueba que se carga correctamente el fichero _app.js_. Tras esto, ejecutamos los test:
+
+![img17](Capturas/imagen17.png)
+
+Y comprobamos que los test (en este caso, uno) han sido válidos.
