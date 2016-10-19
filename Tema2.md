@@ -1,4 +1,4 @@
-# Ejercicios del tema 2: Desarrollo basado en pruebas
+Do  # Ejercicios del tema 2: Desarrollo basado en pruebas
 ### Ejercicio 1
 **Instalar alguno de los entornos virtuales de node.js (o de cualquier otro lenguaje con el que se esté familiarizado) y, con ellos, instalar la última versión existente, la versión minor más actual de la 4.x y lo mismo para la 0.11 o alguna impar (de desarrollo).**
 
@@ -127,3 +127,38 @@ A continuación he instalado docco:
 Y esto queda reflejado en el _package.json_:
 
 ![img12](Capturas/imagen12.png)
+
+A continuación creamos el archivo _Gruntfile.js_ con la siguient estructura:
+```json
+'use strict';
+
+module.exports = function(grunt) {
+
+  // Configuración del proyecto
+  grunt.initConfig({
+  pkg: grunt.file.readJSON('package.json'),
+  docco: {
+	  debug: {
+	  src: ['*.js'],
+	  options: {
+		  output: 'docs/'
+	  }
+	  }
+  }
+  });
+
+  // Carga el plugin de grunt para hacer esto
+  grunt.loadNpmTasks('grunt-docco');
+
+  // Tarea por omisión: generar la documentación
+  grunt.registerTask('default', ['docco']);
+};
+```
+
+Y finalmente generamos la documentación:
+
+![img13](Capturas/imagen13.png)
+
+Éste es el archivo _Gruntfile.html_ por ejemplo:
+
+![img14](Capturas/imagen14.png)
