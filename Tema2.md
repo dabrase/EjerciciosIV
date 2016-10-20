@@ -235,8 +235,35 @@ Y comprobamos que los test (en este caso, uno) han sido válidos.
 ### Ejercicio 8
 **Darse de alta. Muchos están conectados con GitHub por lo que puedes autentificarte directamente desde ahí. A través de un proceso de autorización, puedes acceder al contenido e incluso informar del resultado de los tests a GitHub.**
 
+![img18](Capturas/imagen18.png)
+
+![img19](Capturas/imagen19.png)
 
 **Activar el repositorio en el que se vaya a aplicar la integración continua. Travis permite hacerlo directamente desde tu configuración; en otros se dan de alta desde la web de GitHub.**
 
+![img20](Capturas/imagen20.png)
 
 **Crear un fichero de configuración para que se ejecute la integración y añadirlo al repositorio.**
+
+He creado el fichero .travis.yml con la siguiente estructura:
+```yaml
+language: node_js
+node_js:
+  - "0.11.16"
+  - "6.8.1"
+before_install:
+  - npm install -g mocha
+  - cd . && npm install
+script: cd tests; mocha tests.js
+```
+
+Y se comprueba en la página de Travis que los test se han ejecutado correctamente, tanto para la versión 0.11.16 de Node:
+
+![img21](Capturas/imagen21.png)
+
+Como la versión 6.8.1:
+
+![img22](Capturas/imagen22.png)
+
+Y obtenemos mediante la siguiente imagen el estado de los test del repositorio:
+[![Build Status](https://travis-ci.org/juanjetomas/Nodejs-Sample.svg?branch=master)](https://travis-ci.org/juanjetomas/Nodejs-Sample)
