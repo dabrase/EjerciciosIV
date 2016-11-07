@@ -50,3 +50,20 @@ Y obtenemos en terminal la lista actualizada de comentarios:
 ![img31](Capturas/imagen31.png)
 
 Si se vuelve a visitar la dirección _/companies_ se comprueba que se han reflejado los cambios.
+
+### Ejercicio 4
+**Crear pruebas para las diferentes rutas de la aplicación.**
+
+Instalamos _supertest_ con:
+```bash
+npm install supertest --save-dev
+```
+Añadimos al final de _app.js_:
+```javascript
+module.exports = app;
+```
+Y añadimos los test que testean el código del ejercicio anterior en el archivo [test.js](https://github.com/juanjetomas/Nodejs-Sample/blob/master/tests/tests.js).
+
+Comprobamos que los test se ejecutan correctamente:
+
+![img32](Capturas/imagen32.png)
