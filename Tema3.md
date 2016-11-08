@@ -70,3 +70,10 @@ Comprobamos que los test se ejecutan correctamente:
 
 ### Ejercicio 5
 **Instalar y echar a andar tu primera aplicación en Heroku.**
+
+Instalamos el toolbelt de Heroku con:
+```bash
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+```
+Y nos logueamos:
+![img33](Capturas/imagen33.png)
