@@ -71,9 +71,62 @@ Comprobamos que los test se ejecutan correctamente:
 ### Ejercicio 5
 **Instalar y echar a andar tu primera aplicación en Heroku.**
 
+He seguido este tutorial: [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
+
 Instalamos el toolbelt de Heroku con:
 ```bash
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 ```
 Y nos logueamos:
+
 ![img33](Capturas/imagen33.png)
+
+A continuación clonamos el repositorio de la App del tutorial:
+```bash
+git clone https://github.com/heroku/node-js-getting-started.git
+```
+Una vez en el directorio del proyecto, creamos la aplicación:
+
+![img34](Capturas/imagen34.png)
+
+Y recibimos la confirmación de que todo está correcto:
+```bash
+remote: Verifying deploy... done.
+To https://git.heroku.com/pruebanodejj.git
+ * [new branch]      master -> master
+```
+Nos aseguramos de que al menos una instancia de la aplicación esta corriendo:
+```bash
+heroku ps:scale web=1
+```
+Con _heroku open_ nos abre la dirección https://pruebanodejj.herokuapp.com/ y comprobamos que la app de prueba está desplegada correctamente:
+
+![img35](Capturas/imagen35.png)
+
+### Ejercicio 7
+**Haz alguna modificación a tu aplicación en node.js para Heroku, sin olvidar añadir los tests para la nueva funcionalidad, y configura el despliegue automático a Heroku usando Snap CI o alguno de los otros servicios, como Codeship, mencionados en StackOverflow**
+
+Creo una nueva aplicación en Heroku y accedo al [respositorio](https://github.com/juanjetomas/Nodejs-Sample) de mi aplicación de valoración de empresas mediante GitHub:
+
+![img36](Capturas/imagen36.png)
+
+Una vez seleccionado el repositorio, seleccionamos que espere a pasar la integración contínua antes de desplegar, y activamos el despliegue automático:
+
+![img37](Capturas/imagen37.png)
+
+Además, ya teníamos conectado Travis CI con el respositorio en ejercicios anteriores:
+
+![img38](Capturas/imagen38.png)
+
+Tras esto, creamos el archivo _Procfile_ con el siguiente contenido:
+```
+web: node app.js
+```
+
+Y tras realizar un push al repositorio, los test se realizan correctamente en Travis:
+
+![img39](Capturas/imagen39.png)
+
+Y automáticamente se realiza el despliegue en Heroku:
+
+![img40](Capturas/imagen40.png)
