@@ -130,3 +130,14 @@ Y tras realizar un push al repositorio, los test se realizan correctamente en Tr
 Y automáticamente se realiza el despliegue en Heroku:
 
 ![img40](Capturas/imagen40.png)
+
+### Ejercicio 8
+**Preparar la aplicación con la que se ha venido trabajando hasta este momento para ejecutarse en un PaaS, el que se haya elegido.**
+
+Tras el correcto testeo en Travis la aplicación queda correctamente desplegada en Heroku y se puede acceder mediante esta dirección: https://nodejs-sample-jj.herokuapp.com/
+
+![img41](Capturas/imagen41.png)
+
+Pudiendo realizar un PUT desde curl como hacíamos en local:
+
+![img42](Capturas/imagen42.png)
