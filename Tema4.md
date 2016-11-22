@@ -116,3 +116,8 @@ Tras esto, detenemos a la caja:
 ```bash
 sudo lxc-stop -n una-caja
 ```
+
+### Ejercicio 3
+**Crear y ejecutar un contenedor basado en Debian.**
+
+**Crear y ejecutar un contenedor basado en otra distribución, tal como Fedora. Nota En general, crear un contenedor basado en tu distribución y otro basado en otra que no sea la tuya. Fedora, al parecer, tiene problemas si estás en Ubuntu 13.04 o superior, así que en tal caso usa cualquier otra distro.**
