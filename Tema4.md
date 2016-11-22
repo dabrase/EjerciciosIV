@@ -73,6 +73,11 @@ Una vez terminado el proceso, accedemos a ella:
 
 ![img44](Capturas/imagen44.png)
 
+Aunque es mejor acceder a la consola mediante este comando, facilitándose así la salida de la misma:
+```bash
+sudo lxc-console -n una-caja
+```
+
 Podemos observar las interfaces puente de la caja:
 ```bash
 root@una-caja:/# ifconfig
