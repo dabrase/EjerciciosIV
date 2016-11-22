@@ -11,3 +11,98 @@ Y comprobamos que la versión es mayor a la 1.0:
 $ lxc-start --version
 2.0.5
 ```
+También se comprueba la configuración:
+```bash
+asus@asus-GL552VW:~/Documentos/IG/Practica 3$ lxc-checkconfig
+Kernel configuration not found at /proc/config.gz; searching...
+Kernel configuration found at /boot/config-4.4.0-47-generic
+--- Namespaces ---
+Namespaces: enabled
+Utsname namespace: enabled
+Ipc namespace: enabled
+Pid namespace: enabled
+User namespace: enabled
+Network namespace: enabled
+Multiple /dev/pts instances: enabled
+
+--- Control groups ---
+Cgroup: enabled
+Cgroup clone_children flag: enabled
+Cgroup device: enabled
+Cgroup sched: enabled
+Cgroup cpu account: enabled
+Cgroup memory controller: enabled
+Cgroup cpuset: enabled
+
+--- Misc ---
+Veth pair device: enabled
+Macvlan: enabled
+Vlan: enabled
+Bridges: enabled
+Advanced netfilter: enabled
+CONFIG_NF_NAT_IPV4: enabled
+CONFIG_NF_NAT_IPV6: enabled
+CONFIG_IP_NF_TARGET_MASQUERADE: enabled
+CONFIG_IP6_NF_TARGET_MASQUERADE: enabled
+CONFIG_NETFILTER_XT_TARGET_CHECKSUM: enabled
+FUSE (for use with lxcfs): enabled
+
+--- Checkpoint/Restore ---
+checkpoint restore: enabled
+CONFIG_FHANDLE: enabled
+CONFIG_EVENTFD: enabled
+CONFIG_EPOLL: enabled
+CONFIG_UNIX_DIAG: enabled
+CONFIG_INET_DIAG: enabled
+CONFIG_PACKET_DIAG: enabled
+CONFIG_NETLINK_DIAG: enabled
+File capabilities: enabled
+
+Note : Before booting a new kernel, you can check its configuration
+usage : CONFIG=/path/to/config /usr/bin/lxc-checkconfig
+```
+
+### Ejercicio 2
+**Comprobar qué interfaces puente se han creado y explicarlos.**
+
+En primer lugar se crea la caja de ubuntu:
+
+![img43](Capturas/imagen43.png)
+
+Una vez terminado el proceso, accedemos a ella:
+
+![img44](Capturas/imagen44.png)
+
+Podemos observar las interfaces puente de la caja:
+```bash
+root@una-caja:/# ifconfig
+eth0      Link encap:Ethernet  direcciónHW 00:16:3e:e8:44:c5  
+          Direc. inet:10.0.3.184  Difus.:10.0.3.255  Másc:255.255.255.0
+          Dirección inet6: fe80::216:3eff:fee8:44c5/64 Alcance:Enlace
+          ACTIVO DIFUSIÓN FUNCIONANDO MULTICAST  MTU:1500  Métrica:1
+          Paquetes RX:65 errores:0 perdidos:0 overruns:0 frame:0
+          Paquetes TX:11 errores:0 perdidos:0 overruns:0 carrier:0
+          colisiones:0 long.colaTX:1000
+          Bytes RX:9567 (9.5 KB)  TX bytes:1374 (1.3 KB)
+
+lo        Link encap:Bucle local  
+          Direc. inet:127.0.0.1  Másc:255.0.0.0
+          Dirección inet6: ::1/128 Alcance:Anfitrión
+          ACTIVO BUCLE FUNCIONANDO  MTU:65536  Métrica:1
+          Paquetes RX:0 errores:0 perdidos:0 overruns:0 frame:0
+          Paquetes TX:0 errores:0 perdidos:0 overruns:0 carrier:0
+          colisiones:0 long.colaTX:1
+          Bytes RX:0 (0.0 B)  TX bytes:0 (0.0 B)
+```
+En el sistema anfitrión, comprobamos que se ha creado una interfaz para la comunicación con la caja:
+```bash
+asus@asus-GL552VW:~$ ifconfig
+lo        Link encap:Bucle local  
+          Direc. inet:127.0.0.1  Másc:255.0.0.0
+          Dirección inet6: ::1/128 Alcance:Anfitrión
+          ACTIVO BUCLE FUNCIONANDO  MTU:65536  Métrica:1
+          Paquetes RX:6450 errores:0 perdidos:0 overruns:0 frame:0
+          Paquetes TX:6450 errores:0 perdidos:0 overruns:0 carrier:0
+          colisiones:0 long.colaTX:1
+          Bytes RX:1295029 (1.2 MB)  TX bytes:1295029 (1.2 MB)
+```
