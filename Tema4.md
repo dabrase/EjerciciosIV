@@ -111,3 +111,8 @@ lo        Link encap:Bucle local
           colisiones:0 long.colaTX:1
           Bytes RX:1295029 (1.2 MB)  TX bytes:1295029 (1.2 MB)
 ```
+
+Tras esto, detenemos a la caja:
+```bash
+sudo lxc-stop -n una-caja
+```
