@@ -132,3 +132,20 @@ Mi distribución es Ubuntu y el contenedor que he instaldo en el ejercicio anter
 Mi intentción inicial fue instalar Centos, pero como he tenido problemas de dependencias, finalmente he instalado Cirros, que viene como template por defecto:
 
 ![img45](Capturas/imagen45.png)
+
+### Ejercicio 4
+**Instalar lxc-webpanel y usarlo para arrancar, parar y visualizar las máquinas virtuales que se tengan instaladas.**
+
+He descargado el script de instalación de su web (_wget https://lxc-webpanel.github.io/tools/install.sh -O - | bash_), no sin antes haber utilizado _sudo su_:
+
+![img46](Capturas/imagen46.png)
+
+Nos logueamos usando _admin_ como user y password, y en http://localhost:5000/ ya tenemos acceso:
+
+![img47](Capturas/imagen47.png)
+
+**Desde el panel restringir los recursos que pueden usar: CPU shares, CPUs que se pueden usar (en sistemas multinúcleo) o cantidad de memoria.**
+
+He restringido los recursos del container de Cirros a 2 GB de RAM y como máximo 1 núcleo del procesador.
+
+![img48](Capturas/imagen48.png)
