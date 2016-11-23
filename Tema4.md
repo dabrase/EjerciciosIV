@@ -69,6 +69,11 @@ En primer lugar se crea la caja de ubuntu:
 
 ![img43](Capturas/imagen43.png)
 
+A continuación, se arranca:
+```bash
+sudo lxc-start -n una-caja
+```
+
 Una vez terminado el proceso, accedemos a ella:
 
 ![img44](Capturas/imagen44.png)
@@ -120,4 +125,10 @@ sudo lxc-stop -n una-caja
 ### Ejercicio 3
 **Crear y ejecutar un contenedor basado en Debian.**
 
+Mi distribución es Ubuntu y el contenedor que he instaldo en el ejercicio anterior es Ubuntu, por lo que he instaldo un contenedor basado en mi misma distribución (Debian)
+
 **Crear y ejecutar un contenedor basado en otra distribución, tal como Fedora. Nota En general, crear un contenedor basado en tu distribución y otro basado en otra que no sea la tuya. Fedora, al parecer, tiene problemas si estás en Ubuntu 13.04 o superior, así que en tal caso usa cualquier otra distro.**
+
+Mi intentción inicial fue instalar Centos, pero como he tenido problemas de dependencias, finalmente he instalado Cirros, que viene como template por defecto:
+
+![img45](Capturas/imagen45.png)
