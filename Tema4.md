@@ -149,3 +149,6 @@ Nos logueamos usando _admin_ como user y password, y en http://localhost:5000/ y
 He restringido los recursos del container de Cirros a 2 GB de RAM y como máximo 1 núcleo del procesador.
 
 ![img48](Capturas/imagen48.png)
+
+### Ejercicio 5
+**Comparar las prestaciones de un servidor web en una jaula y el mismo servidor en un contenedor. Usar nginx.**
