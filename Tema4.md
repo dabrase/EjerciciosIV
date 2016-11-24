@@ -152,3 +152,184 @@ He restringido los recursos del container de Cirros a 2 GB de RAM y como máximo
 
 ### Ejercicio 5
 **Comparar las prestaciones de un servidor web en una jaula y el mismo servidor en un contenedor. Usar nginx.**
+
+Usaré el contenedor (caja) de Ubuntu creado en los ejercicios anteriores. Como jaula, usaré [debootstrap](https://wiki.debian.org/es/debootstrap). Se instala mediante:
+```bash
+sudo apt-get install debootstrap
+```
+Aunque en mi caso no ha sido necesario ya que estaba previamente instalado en mi sistema. A continuación, creamos la jaula:
+```bash
+$ sudo debootstrap --arch=amd64 xenial /home/jaulas/xenial/ http://archive.ubuntu.com/ubuntu
+I: Retrieving InRelease
+I: Checking Release signature
+I: Valid Release signature (key id 790BC7277767219C42C86F933B4FE6ACC0B21F32)
+I: Retrieving Packages
+I: Validating Packages
+I: Resolving dependencies of required packages...
+I: Resolving dependencies of base packages...
+I: Checking component main on http://archive.ubuntu.com/ubuntu...
+I: Retrieving adduser 3.113+nmu3ubuntu4
+I: Validating adduser 3.113+nmu3ubuntu4
+I: Retrieving apt 1.2.10ubuntu1
+I: Validating apt 1.2.10ubuntu1
+I: Retrieving apt-utils 1.2.10ubuntu1
+I: Validating apt-utils 1.2.10ubuntu1
+I: Retrieving base-files 9.4ubuntu4
+I: Validating base-files 9.4ubuntu4
+I: Retrieving base-passwd 3.5.39
+I: Validating base-passwd 3.5.39
+
+[...]
+```
+
+Una vez instalada la jaula, accedemos a ella:
+```bash
+$ sudo chroot /home/jaulas/xenial/
+root@asus-GL552VW:/#
+```
+Configuramos el proc:
+```bash
+mount -t proc proc /proc
+```
+Y el idioma:
+```bash
+apt-get install language-pack-es
+```
+He instaldo Nginx siguiendo [este tutorial](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/).
+Finalmente, lo lanzo con:
+```bash
+service nginx start
+```
+Desde fuera de la jaula, compruebo que está funcionado mediante:
+```bash
+$ curl http://localhost:80/
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+
+[...]
+```
+
+En el contenedor, accedo al archivo _/etc/nginx/sites-enabled/default_ y especifico el puerto 81 para diferenciarlo del nginx de la jaula:
+```bash
+server {
+        listen 81 default_server;
+        listen [::]:81 default_server;
+```
+
+La ejecución del Apache Benchmark en la caja da:
+```bash_
+$ ab -n 1000 -c 5 http://127.0.0.1:80/
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx/1.10.0
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /
+Document Length:        612 bytes
+
+Concurrency Level:      5
+Time taken for tests:   0.044 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      854000 bytes
+HTML transferred:       612000 bytes
+Requests per second:    22803.46 [#/sec] (mean)
+Time per request:       0.219 [ms] (mean)
+Time per request:       0.044 [ms] (mean, across all concurrent requests)
+Transfer rate:          19017.73 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.0      0       0
+Waiting:        0    0   0.0      0       0
+Total:          0    0   0.0      0       0
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      0 (longest request)
+```
+
+Y en la jaula:
+```bash
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx/1.9.15
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          /
+Document Length:        612 bytes
+
+Concurrency Level:      5
+Time taken for tests:   0.036 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      854000 bytes
+HTML transferred:       612000 bytes
+Requests per second:    27409.28 [#/sec] (mean)
+Time per request:       0.182 [ms] (mean)
+Time per request:       0.036 [ms] (mean, across all concurrent requests)
+Transfer rate:          22858.91 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    0   0.0      0       1
+Waiting:        0    0   0.0      0       1
+Total:          0    0   0.0      0       1
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%      0
+  99%      0
+ 100%      1 (longest request)
+```
+Si comparamos el valor _Requests per second_ la jaula da un mayor rendimiento.
