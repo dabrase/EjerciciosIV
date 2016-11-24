@@ -216,6 +216,9 @@ En el contenedor, accedo al archivo _/etc/nginx/sites-enabled/default_ y especif
 server {
         listen 81 default_server;
         listen [::]:81 default_server;
+
+        [...]
+      }
 ```
 
 La ejecución del Apache Benchmark en la caja da:
@@ -333,3 +336,11 @@ Percentage of the requests served within a certain time (ms)
  100%      1 (longest request)
 ```
 Si comparamos el valor _Requests per second_ la jaula da un mayor rendimiento.
+
+### Ejercicio 6
+**Instalar docker**
+
+Instalado mediante:
+```bash
+sudo apt-get install docker
+```
