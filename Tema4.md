@@ -412,3 +412,68 @@ ubuntu              latest              e4415b714b62        9 days ago          
 centos              latest              0584b3d2cf6d        3 weeks ago         196.5 MB
 hello-world         latest              c54a2cc56cbb        4 months ago        1.848 kB
 ```
+
+### Ejercicio 8
+**Crear un usuario propio e instalar nginx en el contenedor creado de esta forma.**
+
+Ejecutamos un shell de la imagen de Ubuntu:
+```bash
+asus@asus-GL552VW:~/Documentos/IV/EjerciciosIV$ sudo docker run -i -t ubuntu /bin/bash
+root@763825b26902:/#
+```
+
+Añado un nuevo usuario, establezco su contraseña, lo añado al grupo sudo, instalo el paquete sudo y me logueo con él:
+```bash
+root@763825b26902:/# useradd -d /home/nuevouser -m nuevouser
+root@763825b26902:/# passwd nuevouser
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+root@763825b26902:/# adduser nuevouser sudo
+Adding user 'nuevouser' to group 'sudo' ...
+Adding user nuevouser to group sudo
+Done.
+root@763825b26902:/# apt-get install sudo
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  sudo
+0 upgraded, 1 newly installed, 0 to remove and 3 not upgraded.
+Need to get 389 kB of archives.
+After this operation, 1618 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 sudo amd64 1.8.16-0ubuntu1.2 [389 kB]
+Fetched 389 kB in 0s (868 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package sudo.
+(Reading database ... 7259 files and directories currently installed.)
+Preparing to unpack .../sudo_1.8.16-0ubuntu1.2_amd64.deb ...
+Unpacking sudo (1.8.16-0ubuntu1.2) ...
+Setting up sudo (1.8.16-0ubuntu1.2) ...
+root@763825b26902:/# login nuevouser
+Password:
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-47-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+```
+Instalo Nginx
+```bash
+$ sudo apt-get install nginx
+```
+Lo lanzo y compruebo que está funcionado:
+```bash
+nuevouser@763825b26902:~$ sudo service nginx start
+ * Starting nginx
+ nginx         [ OK ] 
+nuevouser@763825b26902:~$ sudo service nginx status
+ * nginx is running
+```
