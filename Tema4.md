@@ -458,13 +458,14 @@ Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-47-generic x86_64)
  * Management:     https://landscape.canonical.com
  * Support:        https://ubuntu.com/advantage
 
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
+The programs included with the Ubuntu system are free software
+the exact distribution terms for_ each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 ```
+
 Instalo Nginx
 ```bash
 $ sudo apt-get install nginx
@@ -473,7 +474,32 @@ Lo lanzo y compruebo que está funcionado:
 ```bash
 nuevouser@763825b26902:~$ sudo service nginx start
  * Starting nginx
- nginx         [ OK ] 
+ nginx         [ OK ]
 nuevouser@763825b26902:~$ sudo service nginx status
  * nginx is running
+```
+
+### Ejercicio 9
+**Crear a partir del contenedor anterior una imagen persistente con commit.**
+
+Accedo a la ID del contenedor:
+```bash
+$ sudo docker ps -a=false
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+763825b26902        ubuntu              "/bin/bash"         38 minutes ago      Up 38 minutes                           nostalgic_lalande
+```
+Y creo una imagen nueva:
+```bash
+$ sudo docker commit 763825b26902 commit_inicial
+sha256:4b23221f8befaee1172aa070b32673adead34b68f9520f0dbaf67fd51aeb8ba5
+```
+Ésta ya aparece en la lista de imágenes:
+```bash
+$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+commit_inicial      latest              4b23221f8bef        45 seconds ago      225.6 MB
+mongo               latest              c5185a594064        5 days ago          342.7 MB
+ubuntu              latest              e4415b714b62        10 days ago         128.1 MB
+centos              latest              0584b3d2cf6d        3 weeks ago         196.5 MB
+hello-world         latest              c54a2cc56cbb        4 months ago        1.848 kB
 ```
