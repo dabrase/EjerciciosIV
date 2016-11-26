@@ -342,5 +342,8 @@ Si comparamos el valor _Requests per second_ la jaula da un mayor rendimiento.
 
 Instalado mediante:
 ```bash
-sudo apt-get install docker
+sudo apt-get install docker.io
 ```
+
+### Ejercicio 7
+**Instalar a partir de docker una imagen alternativa de Ubuntu y alguna adicional, por ejemplo de CentOS.**
