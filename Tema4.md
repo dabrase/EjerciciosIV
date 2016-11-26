@@ -347,3 +347,68 @@ sudo apt-get install docker.io
 
 ### Ejercicio 7
 **Instalar a partir de docker una imagen alternativa de Ubuntu y alguna adicional, por ejemplo de CentOS.**
+
+Comprobamos que docker está corriendo con:
+```bash
+sudo service docker status
+```
+Y si no lo está haciendo lo iniciamos con:
+```bash
+sudo service docker start
+```
+Instalamos Ubuntu:
+```bash
+$ sudo docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+aed15891ba52: Pull complete
+773ae8583d14: Pull complete
+d1d48771f782: Pull complete
+cd3d6cd6c0cf: Pull complete
+8ff6f8a9120c: Pull complete
+Digest: sha256:35bc48a1ca97c3971611dc4662d08d131869daa692acb281c7e9e052924e38b1
+Status: Downloaded newer image for ubuntu:latest
+```
+Instalamos CentOS:
+```bash
+$ sudo docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+aed15891ba52: Pull complete
+773ae8583d14: Pull complete
+d1d48771f782: Pull complete
+cd3d6cd6c0cf: Pull complete
+8ff6f8a9120c: Pull complete
+Digest: sha256:35bc48a1ca97c3971611dc4662d08d131869daa692acb281c7e9e052924e38b1
+Status: Downloaded newer image for ubuntu:latest
+asus@asus-GL552VW:~/Documentos/IV/EjerciciosIV$ sudo docker pull centos
+Using default tag: latest
+```
+
+**Buscar e instalar una imagen que incluya MongoDB.**
+```bash
+$ sudo docker pull mongo
+Using default tag: latest
+latest: Pulling from library/mongo
+386a066cd84a: Pull complete
+524267bc200a: Pull complete
+476d61c7c43a: Pull complete
+0750d0e28b90: Pull complete
+4bedd83d0855: Pull complete
+162b67684652: Pull complete
+46f53b7d829e: Pull complete
+cef8f3d7f866: Pull complete
+2272eba3cacc: Pull complete
+Digest: sha256:5c0b6ec4ed120b591ba625806d4b4e59379e0e8ecb0591e41b3f16cfdf0015a2
+Status: Downloaded newer image for mongo:latest
+```
+
+Y comprobamos las imágenes instaladas:
+```bash
+$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mongo               latest              c5185a594064        4 days ago          342.7 MB
+ubuntu              latest              e4415b714b62        9 days ago          128.1 MB
+centos              latest              0584b3d2cf6d        3 weeks ago         196.5 MB
+hello-world         latest              c54a2cc56cbb        4 months ago        1.848 kB
+```
