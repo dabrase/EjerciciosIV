@@ -503,3 +503,39 @@ ubuntu              latest              e4415b714b62        10 days ago         
 centos              latest              0584b3d2cf6d        3 weeks ago         196.5 MB
 hello-world         latest              c54a2cc56cbb        4 months ago        1.848 kB
 ```
+
+### Ejercicio 10
+**Crear una imagen con las herramientas necesarias para el proyecto de la asignatura sobre un sistema operativo de tu elección.**
+
+He creado el siguiente [Dockerfile](https://github.com/juanjetomas/ProyectoIV/blob/master/Dockerfile) en el que sobre Ubuntu, se instalan las herramientas necesarias para usar Python, además de los requisitos de mi proyecto:
+
+```bash
+#Distribución y versión de ésta
+FROM ubuntu:latest
+
+#Autor
+MAINTAINER Juan Jesús Tomás R.
+
+#Actualiza repositorios e instala: python y herramientas, git,
+#el paquete que contiene a ifconfig y postgresql
+RUN apt-get update && apt-get install -y python3-setuptools python3-dev build-essential libpq-dev git net-tools
+
+#Instala pip
+RUN easy_install3 pip
+
+#Descarga el proyecto
+RUN git clone https://github.com/juanjetomas/ProyectoIV
+
+#Instala las dependencias
+RUN cd ProyectoIV && pip install -r requirements.txt
+
+#Copia el script de ejecución a la raiz
+ADD ejecucion_desde_docker.sh /
+
+#Variable de entorno que indica el entorno de DOCKER
+ENV USINGDOCKER=true
+#Variable de entorno que indica que la base de datos se ejecutará en otro contenedor
+ENV DOCKERMULTIPLE=true
+```
+
+Para una descripción detallada de este fichero, consulte la [documentación del hito 4](https://github.com/juanjetomas/ProyectoIV/blob/documentacion/Hito4.md#ejecución-separada-del-servidor-web-y-la-base-de-datos)
