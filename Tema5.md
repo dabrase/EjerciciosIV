@@ -29,3 +29,27 @@ virsh list --all
  Id    Nombre                         Estado
 ----------------------------------------------------
 ```
+### Ejercicio 2
+#### Ejercicio 2.1
+**Crear varias máquinas virtuales con algún sistema operativo libre tal como Linux o BSD. Si se quieren distribuciones que ocupen poco espacio con el objetivo principalmente de hacer pruebas se puede usar CoreOS (que sirve como soporte para Docker) GALPon Minino, hecha en Galicia para el mundo, Damn Small Linux, SliTaz (que cabe en 35 megas) y ttylinux (basado en línea de órdenes solo).**
+
+Primero creamos el disco duro virtual para slitaz:
+```bash
+$ qemu-img create -f qcow2 mvirtuales/slitaz.qcow 200M
+Formatting 'mvirtuales/slitaz.qcow', fmt=qcow2 size=209715200 encryption=off cluster_size=65536 lazy_refcounts=off refcount_bits=16
+```
+Y tras descargar Slitaz ejecutamos la máquina virtual con:
+```bash
+$ qemu-system-x86_64 -machine accel=kvm -hda mvirtuales/slitaz.qcow -cdrom ../Descargas/slitaz-5.0-rc3.iso -m 1G -boot once=d
+```
+Donde se indica la virtualización, la locaclización del disco duro virtual, la localización del archivo iso, la RAM asignada y el orden de arranque.
+
+![imagen51](Capturas/imagen51.png)
+
+De la misma forma, creamos otro disco duro virtual para Damn Small Linux:
+```bash
+$ qemu-img create -f qcow2 mvirtuales/small.qcow 200M
+Formatting 'mvirtuales/small.qcow', fmt=qcow2 size=209715200 encryption=off cluster_size=65536 lazy_refcounts=off refcount_bits=16
+```
+Y ejecutamos:
+![imagen52](Capturas/imagen52.png)
