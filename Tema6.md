@@ -1,4 +1,4 @@
-# Ejercicios del tema 5: Gestión de infraestructuras virtuales
+# Ejercicios del tema 6: Gestión de infraestructuras virtuales
 ### Ejercicio 1
 **Instalar chef en la máquina virtual que vayamos a usar**
 
