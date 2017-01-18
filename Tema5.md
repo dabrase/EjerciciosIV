@@ -53,3 +53,14 @@ Formatting 'mvirtuales/small.qcow', fmt=qcow2 size=209715200 encryption=off clus
 ```
 Y ejecutamos:
 ![imagen52](Capturas/imagen52.png)
+
+#### Ejercicio 2.2
+**Hacer un ejercicio equivalente usando otro hipervisor como Xen, VirtualBox o Parallels.**
+
+Desde Virtualbox, hacemos click en _nueva_ y rellenamos los datos tal y como se muestra:
+
+![imagen53](Capturas/imagen53.png)
+
+Se asigna la ram:
+
+![imagen54](Capturas/imagen54.png)
