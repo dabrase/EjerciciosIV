@@ -64,3 +64,31 @@ Desde Virtualbox, hacemos click en _nueva_ y rellenamos los datos tal y como se 
 Se asigna la ram:
 
 ![imagen54](Capturas/imagen54.png)
+
+Si el sistema muestra que el driver de virtualbox no está funcionando correctamente, hay un sinfín de posiblidades, pero en mi caso me funcionó lo siguiente:
+* Desisntalar dkms
+* Desinstalar Virtualbox
+* Instalar ambos siguiendo [esta guía](https://www.virtualbox.org/wiki/Linux_Downloads)
+
+Se selecciona el archivo .iso:
+
+![imagen55](Capturas/imagen55.png)
+
+E inicia la máquina virtual:
+
+![imagen56](Capturas/imagen56.png)
+
+Siguiendo los mismos pasos arrancamos Slitaz:
+
+![imagen57](Capturas/imagen57.png)
+
+### Ejercicio 3
+**Crear un benchmark de velocidad de entrada salida y comprobar la diferencia entre usar paravirtualización y arrancar la máquina virtual simplemente con qemu-system-x86_64 -hda /media/Backup/Isos/discovirtual.img**
+
+Instalo Slitaz y lo abro de la manera habitual:
+```bash
+qemu-system-x86_64 -machine accel=kvm -hda Documentos/mvirtuales/slitaz.qcow -m 1G
+```
+Y ejecuto un pequeño progama que he creado que escribe en disco (donde se quiere comprobar la mejora), arrojando este tiempo de ejecución:
+
+![imagen58](Capturas/imagen58.png)
