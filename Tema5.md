@@ -92,3 +92,9 @@ qemu-system-x86_64 -machine accel=kvm -hda Documentos/mvirtuales/slitaz.qcow -m 
 Y ejecuto un pequeño progama que he creado que escribe en disco (donde se quiere comprobar la mejora), arrojando este tiempo de ejecución:
 
 ![imagen58](Capturas/imagen58.png)
+
+Cuando ejecuto la paravirtualización lamentablemente obtengo un _Kernel Panic_ y por más que he intentado arrancar la máquina no me ha sido posible:
+
+![imagen60](Capturas/imagen60.png)
+
+Pese a ello, he investigado un poco y por lo que parece, los beneficios de la paravirtualización dependen del programa a testear, y en aquellos en los que se realizan cálculos matemáticos, por ejemplo, puede no observarse mejora.
