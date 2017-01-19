@@ -117,3 +117,37 @@ Ofrece estos resultados:
 ![imagen62](Capturas/imagen62.png)
 
 Por lo que experimentamos una leve mejora, alrededor de un 4%.
+
+### Ejercicio 4
+**Crear una máquina virtual Linux con 512 megas de RAM y entorno gráfico LXDE a la que se pueda acceder mediante VNC y ssh.**
+
+En primer lugar descargo [Debian netinstall](http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-8.7.1-amd64-netinst.iso) y creo un disco duro virtual:
+```bash
+qemu-img create -f qcow2 debianlxde.img 9G
+```
+Y lanzamos la máquina por primera vez para realizar la instalación:
+```bash
+qemu-system-x86_64 -hda debianlxde.img -cdrom /home/asus/Descargas/debian-8.7.1-amd64-netinst.iso
+```
+Activamos la opción vnc:
+```bash
+qemu-system-x86_64 -vnc 0.0.0.0:1 -hda debianlxde.img
+```
+Y nos conectamos con vinagre:
+```bash
+vinagre 0.0.0.0:1
+```
+
+![imagen63](Capturas/imagen63.png)
+
+Para el SSH lanzamos la máquina virtual como sigue:
+```bash
+qemu-system-x86_64 -hda debianlxde.img -m 512M -name jjdebian -redir tcp:2222::22
+```
+Y conectamos así:
+```bash
+ssh -p 2222 localhost
+```
+Así accedemos finalmente:
+
+![imagen64](Capturas/imagen64.png)
