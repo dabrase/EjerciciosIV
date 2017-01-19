@@ -98,3 +98,22 @@ Cuando ejecuto la paravirtualización lamentablemente obtengo un _Kernel Panic_ 
 ![imagen60](Capturas/imagen60.png)
 
 Pese a ello, he investigado un poco y por lo que parece, los beneficios de la paravirtualización dependen del programa a testear, y en aquellos en los que se realizan cálculos matemáticos, por ejemplo, puede no observarse mejora.
+
+Intentaré hacerlo en otra distribución: Debian. Ejecuto sin paravirtualización:
+```bash
+qemu-system-x86_64 -boot order=c -drive file=debianlxde.img
+```
+Obteniendo estos resultados:
+
+![imagen61](Capturas/imagen61.png)
+
+
+Y la ejecución con paravirtualización:
+```bash
+qemu-system-x86_64 -boot order=c -drive file=debianlxde.img,if=virtio
+```
+Ofrece estos resultados:
+
+![imagen62](Capturas/imagen62.png)
+
+Por lo que experimentamos una leve mejora, alrededor de un 4%.
